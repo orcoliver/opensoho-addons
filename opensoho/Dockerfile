@@ -1,7 +1,6 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.2.1
 # Stage 1: Build OpenSoho
 FROM golang:1.24-alpine AS builder
-
 # Set the working directory inside the container
 WORKDIR /app
 
