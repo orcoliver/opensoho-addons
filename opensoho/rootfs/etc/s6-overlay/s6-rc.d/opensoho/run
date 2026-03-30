@@ -1,0 +1,27 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: OpenSoho
+# Runs the OpenSoho service
+# ==============================================================================
+
+# Read SSH key from configuration
+if bashio::config.has_value 'ssh_key'; then
+    bashio::log.info "Provisioning SSH key..."
+    ssh_key=$(bashio::config 'ssh_key')
+    echo "${ssh_key}" > /data/id_rsa
+    chmod 600 /data/id_rsa
+fi
+
+# Load or generate OPENSOHO_SHARED_SECRET
+if [ ! -f /data/.shared_secret ]; then
+    bashio::log.info "Generating shared secret..."
+    shared_secret=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32)
+    echo "${shared_secret}" > /data/.shared_secret
+    bashio::log.notice "Generated OPENSOHO_SHARED_SECRET: ${shared_secret}"
+    bashio::log.notice "Save this secret for configuring your OpenWrt devices."
+fi
+export OPENSOHO_SHARED_SECRET=$(cat /data/.shared_secret)
+
+# Launch OpenSoho
+bashio::log.info "Starting OpenSoho..."
+exec /usr/bin/opensoho serve --http 0.0.0.0:8090 --dir /data
