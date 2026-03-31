@@ -40,5 +40,5 @@ LABEL \
     io.hass.description="OpenWrt Router Management for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="1.0.3" \
+    io.hass.version="1.0.4" \
     maintainer="Jules"

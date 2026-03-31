@@ -1,6 +1,6 @@
 ---
 name: OpenSoho
-version: "1.0.3"
+version: "1.0.4"
 slug: opensoho
 description: OpenWrt Router Management for Home Assistant
 url: https://github.com/orcoliver/opensoho
