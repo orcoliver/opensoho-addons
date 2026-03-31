@@ -1,6 +1,6 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.2.1
 # Stage 1: Build OpenSoho
-FROM golang:1.24-alpine AS builder
+FROM golang:1.26-alpine AS builder
 # Set the working directory inside the container
 WORKDIR /app
 
@@ -40,5 +40,5 @@ LABEL \
     io.hass.description="OpenWrt Router Management for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="1.0.0" \
+    io.hass.version="1.0.3" \
     maintainer="Jules"
