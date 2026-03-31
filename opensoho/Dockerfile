@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apk add --no-cache git ca-certificates
 
 # Clone the source code
-ARG CACHE_BUST=3
+ARG CACHE_BUST=4
 RUN git clone https://github.com/orcoliver/opensoho.git .
 
 # Download dependencies
@@ -41,5 +41,5 @@ LABEL \
     io.hass.description="OpenWrt Router Management for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="1.0.6" \
+    io.hass.version="1.0.7" \
     maintainer="Jules"
